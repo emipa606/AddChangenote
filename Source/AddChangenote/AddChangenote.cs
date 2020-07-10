@@ -52,7 +52,7 @@ namespace AddChangenote
                 return;
             }
             string currentVersion = null;
-            Regex versionRegex = new Regex(@"<version>\d+(?:\.\d+){1,3}<\/<version>");
+            Regex versionRegex = new Regex(@"<version>\d+(?:\.\d+){1,3}<\/version>");
             foreach (var line in File.ReadAllLines(manifestFile.FullName))
             {
                 Match match = versionRegex.Match(line);
