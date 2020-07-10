@@ -68,8 +68,12 @@ namespace AddChangenote
             string changelogMessage = null;
             foreach (var line in File.ReadAllLines(changelogFile.FullName))
             {
-                if (line.StartsWith("#")) 
+                if (line.StartsWith(currentVersion))
+                {
+                    isExtracting = true;
+                    changelogMessage += line;
                     continue;
+                }
                 Match match = versionRegex.Match(line);
                 if (isExtracting)
                 {                    
@@ -78,13 +82,10 @@ namespace AddChangenote
                     changelogMessage += line;
                     continue;
                 }
-                if (!match.Success)
-                    continue;
-                changelogMessage += line;
             }
             if(string.IsNullOrEmpty(changelogMessage))
             {
-                Log.Message("Could not find version in manifest-file for mod " + modName + ", skipping modification of changenote.");
+                Log.Message("Could not changenote in changelogFile-file for mod " + modName + ", skipping modification of changenote.");
                 return;
             }
             pchChangeNote = changelogMessage;
