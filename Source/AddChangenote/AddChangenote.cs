@@ -38,7 +38,6 @@ namespace AddChangenote
                 return;
             var modName = AddChangenote.currentMod.GetWorkshopName();
             var modDirectory = AddChangenote.currentMod.GetWorkshopUploadDirectory();
-            Log.Message("Trying to add changelog-message for mod " + modName + " from directory " + modDirectory.FullName);
             var changelogFile = new FileInfo(modDirectory.FullName + "\\About\\Changelog.txt");
             if(!changelogFile.Exists)
             {
@@ -52,11 +51,13 @@ namespace AddChangenote
                 return;
             }
             string currentVersion = null;
-            Regex versionRegex = new Regex(@"<version>\d+(?:\.\d+){1,3}</version>");
             foreach (var line in File.ReadAllLines(manifestFile.FullName))
             {
-                Match match = versionRegex.Match(line);
-                currentVersion = match.Value;
+                if(!line.Contains("<version>"))
+                {
+                    continue;
+                }
+                currentVersion = line.Replace("<version>", "|").Split('|')[1].Split('<')[0];
             }
             if (string.IsNullOrEmpty(currentVersion))
             {
@@ -64,8 +65,10 @@ namespace AddChangenote
                 return;
             }
 
+            Log.Message(currentVersion);
             bool isExtracting = false;
             string changelogMessage = null;
+            Regex versionRegex = new Regex(@"\d+(?:\.\d+){1,3}");
             foreach (var line in File.ReadAllLines(changelogFile.FullName))
             {
                 if (line.StartsWith(currentVersion))
@@ -85,7 +88,7 @@ namespace AddChangenote
             }
             if(string.IsNullOrEmpty(changelogMessage))
             {
-                Log.Message("Could not changenote in changelogFile-file for mod " + modName + ", skipping modification of changenote.");
+                Log.Message("Could not find latest changenote in changelog-file for mod " + modName + ", skipping modification of changenote.");
                 return;
             }
             pchChangeNote = changelogMessage;
