@@ -86,7 +86,7 @@ namespace AddChangenote
                 return;
             }
 
-            changelogMessage = changelogMessage.Replace("\n", "\n\n").Trim();
+            changelogMessage = changelogMessage.Replace("\r\n", "\r\n\r\n").Trim();
 
             pchChangeNote = changelogMessage;
         }

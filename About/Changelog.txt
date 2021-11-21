@@ -1,5 +1,12 @@
 # Changelog for AddChangenote
 
+1.0.8.0 - Testing multiline changenot again
+Second
+
+Fourth
+
+
+
 1.0.7.0 - Checking to see if the changenote supports multiple lines
 This should be line number two
 

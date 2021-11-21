@@ -1,13 +1,18 @@
-<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8"?>
 <Defs>
-	<HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
-		<modNameReadable>AddChangenote</modNameReadable>
-		<linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2161604688</linkUrl>
-	</HugsLib.UpdateFeatureDef>
+  <HugsLib.UpdateFeatureDef Abstract="true" Name="UpdateFeatureBase">
+    <modNameReadable>AddChangenote</modNameReadable>
+    <linkUrl>https://steamcommunity.com/sharedfiles/filedetails/?id=2161604688</linkUrl>
+  </HugsLib.UpdateFeatureDef>
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>AddChangenote_1_0_7_0</defName>
+    <assemblyVersion>1.0.7.0</assemblyVersion>
+    <content>
+    </content>
+  </HugsLib.UpdateFeatureDef>
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>AddChangenote_1_0_7_0</defName>
-		<assemblyVersion>1.0.7.0</assemblyVersion>
+		<defName>AddChangenote_1_0_8_0</defName>
+		<assemblyVersion>1.0.8.0</assemblyVersion>
 		<content></content>
 	</HugsLib.UpdateFeatureDef>
 </Defs>
-
