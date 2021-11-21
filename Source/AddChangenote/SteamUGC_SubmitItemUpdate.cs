@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Text.RegularExpressions;
 using HarmonyLib;
 using Steamworks;
@@ -54,14 +56,14 @@ namespace AddChangenote
 
             Log.Message(currentVersion);
             var isExtracting = false;
-            string changelogMessage = null;
+            var changelogArray = new List<string>();
             var versionRegex = new Regex(@"\d+(?:\.\d+){1,3}");
             foreach (var line in File.ReadAllLines(changelogFile.FullName))
             {
                 if (line.StartsWith(currentVersion))
                 {
                     isExtracting = true;
-                    changelogMessage += line;
+                    changelogArray.Add(line);
                     continue;
                 }
 
@@ -76,8 +78,10 @@ namespace AddChangenote
                     break;
                 }
 
-                changelogMessage += line;
+                changelogArray.Add(line);
             }
+
+            var changelogMessage = string.Join(Environment.NewLine, changelogArray).Trim();
 
             if (string.IsNullOrEmpty(changelogMessage))
             {
@@ -85,8 +89,6 @@ namespace AddChangenote
                             ", skipping modification of changenote.");
                 return;
             }
-
-            changelogMessage = changelogMessage.Replace("\r\n", "\r\n\r\n").Trim();
 
             pchChangeNote = changelogMessage;
         }

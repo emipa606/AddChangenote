@@ -10,9 +10,15 @@
     <content>
     </content>
   </HugsLib.UpdateFeatureDef>
+  <HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
+    <defName>AddChangenote_1_0_8_0</defName>
+    <assemblyVersion>1.0.8.0</assemblyVersion>
+    <content>
+    </content>
+  </HugsLib.UpdateFeatureDef>
 	<HugsLib.UpdateFeatureDef ParentName="UpdateFeatureBase">
-		<defName>AddChangenote_1_0_8_0</defName>
-		<assemblyVersion>1.0.8.0</assemblyVersion>
+		<defName>AddChangenote_1_0_9_0</defName>
+		<assemblyVersion>1.0.9.0</assemblyVersion>
 		<content></content>
 	</HugsLib.UpdateFeatureDef>
 </Defs>
