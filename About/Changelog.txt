@@ -1,5 +1,12 @@
 # Changelog for AddChangenote
 
+1.0.7.0 - Checking to see if the changenote supports multiple lines
+This should be line number two
+
+And four
+
+
+
 1.0.6.0 - Mod updated for 1.3 and passed autotests
 
 
