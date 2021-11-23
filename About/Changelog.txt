@@ -1,5 +1,8 @@
 # Changelog for AddChangenote
 
+1.0.10.0 - Republish to remove empty HugsLib news
+
+
 1.0.9.0 - Found one silly issue
 Hopefully this will work for multiline
 
