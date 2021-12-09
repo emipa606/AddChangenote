@@ -1,5 +1,8 @@
 # Changelog for AddChangenote
 
+1.0.11.0 - Should no longer stop reading lines from changelog unless it matches on a version at the beginning of the line.
+
+
 1.0.10.0 - Republish to remove empty HugsLib news
 
 
