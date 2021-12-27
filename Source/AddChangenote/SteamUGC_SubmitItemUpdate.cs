@@ -60,6 +60,11 @@ internal class SteamUGC_SubmitItemUpdate
         var versionRegex = new Regex(@"^\d+(?:\.\d+){1,3}");
         foreach (var line in File.ReadAllLines(changelogFile.FullName))
         {
+            if (line.StartsWith("#"))
+            {
+                continue;
+            }
+
             if (line.StartsWith(currentVersion))
             {
                 isExtracting = true;
