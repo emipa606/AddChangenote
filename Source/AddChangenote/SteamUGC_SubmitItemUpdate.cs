@@ -20,19 +20,19 @@ internal class SteamUGC_SubmitItemUpdate
 
         var modName = AddChangenote.currentMod.GetWorkshopName();
         var modDirectory = AddChangenote.currentMod.GetWorkshopUploadDirectory();
-        var changelogFile = new FileInfo(modDirectory.FullName + "\\About\\Changelog.txt");
+        var changelogFile = new FileInfo($"{modDirectory.FullName}\\About\\Changelog.txt");
         if (!changelogFile.Exists)
         {
-            Log.Message("Could not find changelog-file for mod " + modName + " at path " + changelogFile.FullName +
-                        ", skipping modification of changenote.");
+            Log.Message(
+                $"Could not find changelog-file for mod {modName} at path {changelogFile.FullName}, skipping modification of changenote.");
             return;
         }
 
-        var manifestFile = new FileInfo(modDirectory.FullName + "\\About\\Manifest.xml");
+        var manifestFile = new FileInfo($"{modDirectory.FullName}\\About\\Manifest.xml");
         if (!manifestFile.Exists)
         {
-            Log.Message("Could not find manifest-file for mod " + modName + " at path " + manifestFile.FullName +
-                        ", skipping modification of changenote.");
+            Log.Message(
+                $"Could not find manifest-file for mod {modName} at path {manifestFile.FullName}, skipping modification of changenote.");
             return;
         }
 
@@ -49,8 +49,8 @@ internal class SteamUGC_SubmitItemUpdate
 
         if (string.IsNullOrEmpty(currentVersion))
         {
-            Log.Message("Could not find version in manifest-file for mod " + modName +
-                        ", skipping modification of changenote.");
+            Log.Message(
+                $"Could not find version in manifest-file for mod {modName}, skipping modification of changenote.");
             return;
         }
 
@@ -90,8 +90,8 @@ internal class SteamUGC_SubmitItemUpdate
 
         if (string.IsNullOrEmpty(changelogMessage))
         {
-            Log.Message("Could not find latest changenote in changelog-file for mod " + modName +
-                        ", skipping modification of changenote.");
+            Log.Message(
+                $"Could not find latest changenote in changelog-file for mod {modName}, skipping modification of changenote.");
             return;
         }
 
