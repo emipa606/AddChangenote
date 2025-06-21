@@ -8,18 +8,18 @@ using Verse;
 
 namespace AddChangenote;
 
-[HarmonyPatch(typeof(SteamUGC), "SubmitItemUpdate")]
+[HarmonyPatch(typeof(SteamUGC), nameof(SteamUGC.SubmitItemUpdate))]
 internal class SteamUGC_SubmitItemUpdate
 {
     private static void Prefix(ref string pchChangeNote)
     {
-        if (!pchChangeNote.StartsWith("[Auto-generated text]") || AddChangenote.currentMod == null)
+        if (!pchChangeNote.StartsWith("[Auto-generated text]") || AddChangenote.CurrentMod == null)
         {
             return;
         }
 
-        var modName = AddChangenote.currentMod.GetWorkshopName();
-        var modDirectory = AddChangenote.currentMod.GetWorkshopUploadDirectory();
+        var modName = AddChangenote.CurrentMod.GetWorkshopName();
+        var modDirectory = AddChangenote.CurrentMod.GetWorkshopUploadDirectory();
         var changelogFile = new FileInfo($"{modDirectory.FullName}\\About\\Changelog.txt");
         if (!changelogFile.Exists)
         {

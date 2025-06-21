@@ -1,4 +1,5 @@
-﻿using HarmonyLib;
+﻿using System.Reflection;
+using HarmonyLib;
 using Verse;
 using Verse.Steam;
 
@@ -9,8 +10,8 @@ public class AddChangenote
 {
     static AddChangenote()
     {
-        new Harmony("Mlie.AddChangenote").PatchAll();
+        new Harmony("Mlie.AddChangenote").PatchAll(Assembly.GetExecutingAssembly());
     }
 
-    public static WorkshopUploadable currentMod { get; set; }
+    public static WorkshopUploadable CurrentMod { get; set; }
 }

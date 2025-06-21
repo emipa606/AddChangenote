@@ -8,6 +8,6 @@ internal class Workshop_Upload
 {
     private static void Prefix(ref WorkshopUploadable item)
     {
-        AddChangenote.currentMod = item;
+        AddChangenote.CurrentMod = item;
     }
 }
