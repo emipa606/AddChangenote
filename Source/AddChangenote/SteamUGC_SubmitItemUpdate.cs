@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using HarmonyLib;
 using Steamworks;
@@ -29,28 +30,41 @@ internal class SteamUGC_SubmitItemUpdate
         }
 
         var manifestFile = new FileInfo($"{modDirectory.FullName}\\About\\Manifest.xml");
-        if (!manifestFile.Exists)
-        {
-            Log.Message(
-                $"Could not find manifest-file for mod {modName} at path {manifestFile.FullName}, skipping modification of changenote.");
-            return;
-        }
-
         string currentVersion = null;
-        foreach (var line in File.ReadAllLines(manifestFile.FullName))
+        if (manifestFile.Exists)
         {
-            if (!line.Contains("<version>"))
+            foreach (var line in File.ReadAllLines(manifestFile.FullName))
             {
-                continue;
+                if (!line.Contains("<version>"))
+                {
+                    continue;
+                }
+
+                currentVersion = line.Replace("<version>", "|").Split('|')[1].Split('<')[0];
             }
 
-            currentVersion = line.Replace("<version>", "|").Split('|')[1].Split('<')[0];
+            if (string.IsNullOrEmpty(currentVersion))
+            {
+                Log.Message(
+                    $"Could not find version in manifest-file for mod {modName}, checking mod-version.");
+            }
         }
 
-        if (string.IsNullOrEmpty(currentVersion))
+        if (currentVersion == null)
+        {
+            var updatingMod =
+                ModLister.AllInstalledMods.FirstOrDefault(data =>
+                    data.Name == AddChangenote.CurrentMod.GetWorkshopName());
+            if (updatingMod != null)
+            {
+                currentVersion = updatingMod.ModVersion;
+            }
+        }
+
+        if (currentVersion == null)
         {
             Log.Message(
-                $"Could not find version in manifest-file for mod {modName}, skipping modification of changenote.");
+                $"Could not find version for mod {modName} by ModVersion or Manifest-file, skipping modification of changenote.");
             return;
         }
 

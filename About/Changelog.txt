@@ -1,5 +1,8 @@
 # Changelog for AddChangenote
 
+1.6.1 - Can now look for the ModVersion attribute in the about-file as well
+
+
 1.6.0 - Mod updated for 1.6 and passed autotests
 
 

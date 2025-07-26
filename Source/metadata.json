@@ -6,5 +6,11 @@
   "SocialImageSet": true,
   "FundingSet": true,
   "SearchTags": " automatic changelog",
-  "LastXmlCleaning": "2025-06-21T22:45:41.2355878+02:00"
+  "LastXmlCleaning": "2025-07-26T14:58:25.2607683+02:00",
+  "Patches": false,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 4873,
+  "LinesOfXML": 0,
+  "CodeBaseSize": 57
 }
