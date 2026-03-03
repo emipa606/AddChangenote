@@ -1,17 +1,16 @@
 name: Bug Report
 description: Report a bug
-title: "[BUG] <short description>"
+title: ""
+placeholder: "A short description"
 labels: ["bug"]
 assignees: []
 body:
   - type: markdown
     attributes:
       value: |
-        [list]
-        [*] See if the the error persists if you just have this mod and its requirements active.
-        [*] If not, try adding your other mods until it happens again.
-        [*] Always post your log using the [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404]Log Uploader[/url]
-        [/list]         
+        - See if the the error persists if you just have this mod and its requirements active.
+        - If not, try adding your other mods until it happens again.
+        - Always post your log using the [Log Uploader](https://steamcommunity.com/sharedfiles/filedetails/?id=2873415404)         
 
   - type: input
     id: summary
@@ -27,7 +26,7 @@ body:
     attributes:
       label: Steps to reproduce
       description: Be as specific as possible
-      value: |
+      placeholder: |
         1.
         2.
         3.
