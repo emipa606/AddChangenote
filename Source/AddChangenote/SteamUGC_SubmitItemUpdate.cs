@@ -10,9 +10,9 @@ using Verse;
 namespace AddChangenote;
 
 [HarmonyPatch(typeof(SteamUGC), nameof(SteamUGC.SubmitItemUpdate))]
-internal class SteamUGC_SubmitItemUpdate
+internal static class SteamUGC_SubmitItemUpdate
 {
-    private static void Prefix(ref string pchChangeNote)
+    public static void Prefix(ref string pchChangeNote)
     {
         if (!pchChangeNote.StartsWith("[Auto-generated text]") || AddChangenote.CurrentMod == null)
         {
@@ -71,10 +71,10 @@ internal class SteamUGC_SubmitItemUpdate
         Log.Message(currentVersion);
         var isExtracting = false;
         var changelogArray = new List<string>();
-        var versionRegex = new Regex(@"^\d+(?:\.\d+){1,3}");
+        var versionRegex = new Regex(@"^\d+(?:\.\d+){1,3}", RegexOptions.None, TimeSpan.FromSeconds(1));
         foreach (var line in File.ReadAllLines(changelogFile.FullName))
         {
-            if (line.StartsWith("#"))
+            if (line.StartsWith('#'))
             {
                 continue;
             }

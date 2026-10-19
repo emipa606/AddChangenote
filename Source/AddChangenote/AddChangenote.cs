@@ -6,7 +6,7 @@ using Verse.Steam;
 namespace AddChangenote;
 
 [StaticConstructorOnStartup]
-public class AddChangenote
+public static class AddChangenote
 {
     static AddChangenote()
     {

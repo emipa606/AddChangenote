@@ -37,4 +37,4 @@ body:
     attributes:
       label: Log link
       description: A link to the HugsLib log where this happens
-      placeholder: e.g. "Crash when opening settings"
+      placeholder: https://gist.github.com/HugsLibRecordKeeper/8ae9197fdff08b4f6e92547583dc4cbb
